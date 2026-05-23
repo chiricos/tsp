@@ -1,0 +1,115 @@
+{#
+  tienda-catalog.html.twig
+  Catálogo con búsqueda básica (keyword + categoría).
+#}
+{{ attach_library('tienda_virtual/tienda_virtual') }}
+
+<div class="tv-catalog-wrapper">
+
+  {# ── Search bar ─────────────────────────────────────────────────────── #}
+  <section class="tv-search-bar">
+    <form method="get" action="/catalog" class="tv-search-form">
+      <div class="tv-search-row">
+        <input
+          type="search"
+          name="keyword"
+          value="{{ keyword|e }}"
+          placeholder="🔍 Buscar productos por nombre…"
+          class="tv-input tv-input--search"
+        />
+        <select name="category" class="tv-input tv-select">
+          <option value="0">Todas las categorías</option>
+          {% for term in categories %}
+            <option value="{{ term.id() }}"
+              {% if term.id() == category_id %} selected{% endif %}>
+              {{ term.getName() }}
+            </option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="tv-btn tv-btn--primary">Buscar</button>
+        <a href="/busqueda-avanzada" class="tv-btn tv-btn--secondary">
+          🔧 Búsqueda Avanzada
+        </a>
+      </div>
+    </form>
+  </section>
+
+  {# ── Results summary ─────────────────────────────────────────────────── #}
+  <div class="tv-results-summary">
+    {% if keyword or category_id %}
+      <p>
+        Se encontraron <strong>{{ total }}</strong> producto(s)
+        {% if keyword %} para <em>"{{ keyword|e }}"</em>{% endif %}
+        {% if category_id %}
+          {% for term in categories %}
+            {% if term.id() == category_id %} en <em>{{ term.getName() }}</em>{% endif %}
+          {% endfor %}
+        {% endif %}.
+        <a href="/catalog">Ver todos</a>
+      </p>
+    {% else %}
+      <p>Mostrando <strong>{{ total }}</strong> productos en catálogo.</p>
+    {% endif %}
+  </div>
+
+  {# ── Product grid ────────────────────────────────────────────────────── #}
+  {% if products is not empty %}
+    <div class="tv-product-grid">
+      {% for p in products %}
+        <article class="tv-product-card" data-id="{{ p.id }}">
+
+          {# Image (click → product detail) #}
+          <a href="{{ p.url }}" class="tv-card-image-link" title="Ver {{ p.title }}">
+            <div class="tv-card-image-wrap">
+              <img
+                src="{{ p.image_url }}"
+                alt="{{ p.title }}"
+                class="tv-card-image"
+                loading="lazy"
+                onerror="this.src='/modules/custom/tienda_virtual/images/no-image.png'"
+              />
+              <span class="tv-card-zoom-icon">🔍</span>
+            </div>
+          </a>
+
+          <div class="tv-card-body">
+            {% if p.category %}
+              <span class="tv-badge">{{ p.category }}</span>
+            {% endif %}
+
+            <h3 class="tv-card-title">
+              <a href="{{ p.url }}">{{ p.title }}</a>
+            </h3>
+
+            {% if p.body %}
+              <p class="tv-card-summary">{{ p.body }}</p>
+            {% endif %}
+
+            <div class="tv-card-meta">
+              <span class="tv-price">{{ p.price_display }}</span>
+              <span class="tv-stock {% if p.stock > 0 %}tv-stock--ok{% else %}tv-stock--empty{% endif %}">
+                {% if p.stock > 0 %}
+                  ✅ {{ p.stock }} en stock
+                {% else %}
+                  ❌ Sin stock
+                {% endif %}
+              </span>
+            </div>
+
+            <a href="{{ p.url }}" class="tv-btn tv-btn--primary tv-btn--full">
+              🛒 Ver producto
+            </a>
+          </div>
+
+        </article>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div class="tv-empty">
+      <p>😕 No se encontraron productos con los criterios indicados.</p>
+      <a href="/catalog" class="tv-btn tv-btn--secondary">Ver catálogo completo</a>
+    </div>
+  {% endif %}
+
+</div>

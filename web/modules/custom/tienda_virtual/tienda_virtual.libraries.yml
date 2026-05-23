@@ -1,0 +1,9 @@
+tienda_virtual:
+  css:
+    theme:
+      css/tienda_virtual.css: {}
+  js:
+    js/tienda_virtual.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

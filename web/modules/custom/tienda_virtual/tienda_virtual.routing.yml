@@ -1,0 +1,15 @@
+tienda_virtual.catalog:
+  path: '/catalog'
+  defaults:
+    _controller: '\Drupal\tienda_virtual\Controller\CatalogController::catalog'
+    _title: 'Catálogo de Productos'
+  requirements:
+    _permission: 'access content'
+
+tienda_virtual.advanced_search:
+  path: '/busqueda-avanzada'
+  defaults:
+    _controller: '\Drupal\tienda_virtual\Controller\CatalogController::advancedSearch'
+    _title: 'Búsqueda Avanzada'
+  requirements:
+    _permission: 'access content'

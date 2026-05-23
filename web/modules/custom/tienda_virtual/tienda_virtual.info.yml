@@ -1,0 +1,10 @@
+name: 'Tienda Virtual'
+type: module
+description: 'Catálogo, búsqueda básica y avanzada para la TiendaVirtual.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:commerce_product
+  - drupal:commerce_cart
+  - drupal:taxonomy
+  - drupal:image

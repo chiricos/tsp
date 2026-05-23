@@ -1,0 +1,155 @@
+{#
+  tienda-search-advanced.html.twig
+  Búsqueda avanzada: keyword + categoría + rango de precio + orden.
+#}
+{{ attach_library('tienda_virtual/tienda_virtual') }}
+
+<div class="tv-catalog-wrapper">
+
+  {# ── Advanced search form ─────────────────────────────────────────────── #}
+  <section class="tv-advsearch-panel">
+    <h2 class="tv-advsearch-title">🔧 Búsqueda Avanzada</h2>
+    <form method="get" action="/busqueda-avanzada" class="tv-advsearch-form">
+
+      <div class="tv-advsearch-grid">
+
+        <div class="tv-field-group">
+          <label for="adv-keyword">Nombre / descripción</label>
+          <input
+            id="adv-keyword"
+            type="search"
+            name="keyword"
+            value="{{ keyword|e }}"
+            placeholder="Ej: laptop, nike, yoga…"
+            class="tv-input"
+          />
+        </div>
+
+        <div class="tv-field-group">
+          <label for="adv-category">Categoría</label>
+          <select id="adv-category" name="category" class="tv-input tv-select">
+            <option value="0">Todas las categorías</option>
+            {% for term in categories %}
+              <option value="{{ term.id() }}"
+                {% if term.id() == category_id %} selected{% endif %}>
+                {{ term.getName() }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="tv-field-group">
+          <label for="adv-price-min">Precio mínimo (USD)</label>
+          <input
+            id="adv-price-min"
+            type="number"
+            name="price_min"
+            value="{{ price_min|e }}"
+            min="0"
+            step="0.01"
+            placeholder="0.00"
+            class="tv-input"
+          />
+        </div>
+
+        <div class="tv-field-group">
+          <label for="adv-price-max">Precio máximo (USD)</label>
+          <input
+            id="adv-price-max"
+            type="number"
+            name="price_max"
+            value="{{ price_max|e }}"
+            min="0"
+            step="0.01"
+            placeholder="9999.99"
+            class="tv-input"
+          />
+        </div>
+
+        <div class="tv-field-group">
+          <label for="adv-sort">Ordenar por</label>
+          <select id="adv-sort" name="sort" class="tv-input tv-select">
+            <option value="title_asc"   {% if sort == 'title_asc'   %} selected{% endif %}>Nombre A→Z</option>
+            <option value="title_desc"  {% if sort == 'title_desc'  %} selected{% endif %}>Nombre Z→A</option>
+            <option value="price_asc"   {% if sort == 'price_asc'   %} selected{% endif %}>Precio ↑ menor a mayor</option>
+            <option value="price_desc"  {% if sort == 'price_desc'  %} selected{% endif %}>Precio ↓ mayor a menor</option>
+          </select>
+        </div>
+
+      </div>{# .tv-advsearch-grid #}
+
+      <div class="tv-advsearch-actions">
+        <button type="submit" class="tv-btn tv-btn--primary">
+          🔍 Buscar
+        </button>
+        <a href="/busqueda-avanzada" class="tv-btn tv-btn--secondary">
+          ✕ Limpiar filtros
+        </a>
+        <a href="/catalog" class="tv-btn tv-btn--ghost">
+          ← Ir al catálogo
+        </a>
+      </div>
+
+    </form>
+  </section>
+
+  {# ── Results summary ──────────────────────────────────────────────────── #}
+  <div class="tv-results-summary">
+    <p>Se encontraron <strong>{{ total }}</strong> producto(s).</p>
+  </div>
+
+  {# ── Product grid ─────────────────────────────────────────────────────── #}
+  {% if products is not empty %}
+    <div class="tv-product-grid">
+      {% for p in products %}
+        <article class="tv-product-card" data-id="{{ p.id }}">
+
+          <a href="{{ p.url }}" class="tv-card-image-link" title="Ver {{ p.title }}">
+            <div class="tv-card-image-wrap">
+              <img
+                src="{{ p.image_url }}"
+                alt="{{ p.title }}"
+                class="tv-card-image"
+                loading="lazy"
+                onerror="this.src='/modules/custom/tienda_virtual/images/no-image.png'"
+              />
+              <span class="tv-card-zoom-icon">🔍</span>
+            </div>
+          </a>
+
+          <div class="tv-card-body">
+            {% if p.category %}
+              <span class="tv-badge">{{ p.category }}</span>
+            {% endif %}
+
+            <h3 class="tv-card-title">
+              <a href="{{ p.url }}">{{ p.title }}</a>
+            </h3>
+
+            {% if p.body %}
+              <p class="tv-card-summary">{{ p.body }}</p>
+            {% endif %}
+
+            <div class="tv-card-meta">
+              <span class="tv-price">{{ p.price_display }}</span>
+              <span class="tv-stock {% if p.stock > 0 %}tv-stock--ok{% else %}tv-stock--empty{% endif %}">
+                {% if p.stock > 0 %}✅ {{ p.stock }} en stock{% else %}❌ Sin stock{% endif %}
+              </span>
+            </div>
+
+            <a href="{{ p.url }}" class="tv-btn tv-btn--primary tv-btn--full">
+              🛒 Ver producto
+            </a>
+          </div>
+
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="tv-empty">
+      <p>😕 No se encontraron productos con los filtros aplicados.</p>
+      <a href="/busqueda-avanzada" class="tv-btn tv-btn--secondary">Limpiar filtros</a>
+    </div>
+  {% endif %}
+
+</div>

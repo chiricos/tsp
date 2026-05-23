@@ -1,0 +1,17 @@
+name: tiendavirtual
+type: drupal10
+docroot: web
+php_version: "8.3"
+webserver_type: apache-fpm
+database:
+  type: mariadb
+  version: "10.11"
+composer_version: "2"
+
+router_http_port: "8080"
+router_https_port: "8443"
+
+hooks:
+  post-start:
+    - exec: "bash /var/www/html/scripts/ddev-install.sh 2>&1 || true"
+      service: web
