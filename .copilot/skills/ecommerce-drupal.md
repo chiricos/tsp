@@ -33,6 +33,10 @@ Necesito implementar los siguientes módulos:
 - Precio total
 - Cantidad total
 
+6. Usar theme 
+- usa commerce kickstart
+- adecua a lo que tenemos anterior
+
 Reglas:
 - Usar módulos estándar de Drupal (Views, Commerce si aplica)
 - No modificar core ni contrib
