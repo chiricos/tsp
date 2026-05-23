@@ -1,0 +1,62 @@
+# DDEV
+.ddev/.gitignore
+.ddev/commands/
+.ddev/homeadditions/
+.ddev/config.local.yaml
+.ddev/.dbimageBuild/
+.ddev/.webimageBuild/
+.ddev/db_snapshots/
+.ddev/*.log
+.ddev/addons/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Composer
+vendor/
+composer.lock
+
+# Drupal
+web/core/
+web/libraries/
+web/modules/contrib/
+web/profiles/contrib/
+web/themes/contrib/
+web/drush/Commands/contrib/
+
+# Sites
+web/sites/*/files/
+web/sites/*/private/
+web/sites/*/settings.local.php
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+db_snapshots/
+
+# Node modules (si usas cualquier herramienta de frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# PHPUnit
+phpunit.xml
+
+# Drush backup files
+web/sites/default/files/backup_migrate/
+
+# OS
+Thumbs.db
+.AppleDouble
+.LSOverride
+
