@@ -22,13 +22,15 @@
 
   {# Header #}
   {% if page.header %}
-    <header role="banner">{{ page.header }}</header>
+    <header role="banner">
+      <div class="container-xl">{{ page.header }}</div>
+    </header>
   {% endif %}
 
   {# Navigation #}
   {% if page.navigation %}
     <nav role="navigation" aria-label="{{ 'Main navigation'|t }}">
-      {{ page.navigation }}
+      <div class="container-xl">{{ page.navigation }}</div>
     </nav>
   {% endif %}
 
