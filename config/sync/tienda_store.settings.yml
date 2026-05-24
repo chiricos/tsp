@@ -1,4 +1,4 @@
-product_teaser: card
+product_teaser: belgrade
 product_image_display: default
 features:
   node_user_picture: 1
@@ -91,7 +91,7 @@ checkout_pane_variant: default
 checkout_pane_collapsible: 0
 checkout_pane_show_icons: 0
 checkout_completion_minimal: 0
-main_container: ''
+main_container: container-xl
 main_container_class: ''
 navigation_toggle_visibility: 0
 navigation_toggle_text: ''

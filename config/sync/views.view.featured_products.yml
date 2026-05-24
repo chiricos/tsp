@@ -58,7 +58,9 @@ display:
           exposed: false
       style:
         type: default
-        options: {  }
+        options:
+          row_class: 'col-6 col-md-3'
+          default_row_class: true
       row:
         type: 'entity:commerce_product'
         options:
@@ -67,7 +69,7 @@ display:
       query:
         type: views_query
         options: {  }
-      css_class: 'row row-cols-2 row-cols-md-4 g-4'
+      css_class: ''
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -92,6 +94,12 @@ display:
           order: ASC
           exposed: false
           operator: ASC
+      style:
+        type: default
+        options:
+          row_class: 'col-6 col-md-3'
+          default_row_class: true
+      css_class: ''
       display_extenders: {  }
       block_description: 'Best sellers'
       block_category: Tienda
@@ -106,6 +114,12 @@ display:
     display_plugin: block
     position: 1
     display_options:
+      style:
+        type: default
+        options:
+          row_class: 'col-6 col-md-3'
+          default_row_class: true
+      css_class: ''
       display_extenders: {  }
       block_description: 'New products'
       block_category: Tienda

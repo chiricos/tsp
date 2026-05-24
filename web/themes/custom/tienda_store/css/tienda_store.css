@@ -125,16 +125,125 @@
 }
 
 /* ======================================================
-   Catalog page adjustments
+   Product teaser — belgrade style
    ====================================================== */
+
+/* Fixed-height image in teaser */
+.product {
+  margin: auto;
+  isolation: isolate; /* contiene el stretched-link para que no tape el paginador */
+}
+
+.product .product-image {
+  overflow: hidden;
+}
+
+.product .product-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.product:hover .product-image img {
+  transform: scale(1.04);
+}
+
+/* Hide add-to-cart form in teaser — show price only */
+.product .product-price .commerce-order-item-add-to-cart-form .form-actions,
+.product .product-price .form-actions,
+.product .product-price button[type="submit"],
+.product .product-price .js-form-item,
+.product .product-price .form-item,
+.product .product-price .field--name-purchased-entity {
+  display: none !important;
+}
+
+/* Show only the price span cleanly */
+.product .product-price {
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+/* Price field rendered by variation */
+.product .product--variation-field--variation_price__ .field__label {
+  display: none;
+}
+
+.product .product--variation-field--variation_price__ {
+  font-weight: 600;
+  color: var(--bs-primary);
+  font-size: 0.95rem;
+}
+
+/* Remove bottom margin from form inside teaser */
+.product .commerce-order-item-add-to-cart-form {
+  margin-bottom: 0;
+}
+
+/* ======================================================
+   Catalog page — grid layout
+   ====================================================== */
+
+/* Center the product grid and its items */
+.view-product-catalog .row.g-4 {
+  justify-content: center;
+}
+
 .view-product-catalog .views-row {
   display: flex;
 }
 
-/* Card image height standardisation in catalog */
+/* Card image height in catalog */
 .view-product-catalog .card img {
   height: 220px;
   object-fit: cover;
+}
+
+/* ======================================================
+   Mini pager — custom design
+   ====================================================== */
+.ts-pager {
+  padding: 1rem 0 2rem;
+  position: relative;
+  z-index: 2; /* por encima del stretched-link de los productos */
+}
+
+.ts-pager__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bs-primary);
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  border: none;
+}
+
+.ts-pager__btn:hover {
+  background: var(--bs-dark, #1a1a2e);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.ts-pager__btn--disabled {
+  background: #e0e0e0;
+  color: #aaa;
+  cursor: default;
+  pointer-events: none;
+}
+
+.ts-pager__current {
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0 0.75rem;
+  color: #444;
+  letter-spacing: 0.03em;
 }
 
 /* ======================================================

@@ -46,13 +46,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Buscar
+          submit_button: Apply
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 'A → Z / Newer'
+          sort_desc_label: 'Z → A / Older'
       access:
         type: none
         options: {  }
@@ -74,6 +74,20 @@ display:
             label: ''
           exposed: false
           operator: DESC
+        title:
+          id: title
+          table: commerce_product_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: 'Sort by'
+            field_identifier: title
+          exposed: true
+          operator: ASC
       arguments: {  }
       filters:
         status:
@@ -112,9 +126,36 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        title:
+          id: title
+          table: commerce_product_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: Keyword
+          plugin_id: string
+          operator: CONTAINS
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: 'Keyword search'
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: keyword_search
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
       style:
         type: default
-        options: {  }
+        options:
+          row_class: 'col-lg-4 col-md-6'
+          default_row_class: true
       row:
         type: 'entity:commerce_product'
         options:
@@ -129,8 +170,8 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      css_class: 'row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4'
-      use_ajax: false
+      css_class: ''
+      use_ajax: true
       use_more: false
       use_more_always: true
       use_more_text: more
@@ -141,7 +182,10 @@ display:
       max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
       tags: {  }
   page_1:
     id: page_1
@@ -155,5 +199,8 @@ display:
       max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
       tags: {  }

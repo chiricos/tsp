@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Tienda Store override — Belfast teaser with field_product_image support.
+ *
+ * Adapts the Belgrade teaser to use field_product_image (our custom field)
+ * instead of the Commerce-standard "images" / "variation_images" fields.
+ * Also shows price cleanly and hides the add-to-cart form.
+ */
+#}
+{% import "@belgrade/macros.twig" as svg %}
+
+{%
+  set classes = [
+    'product',
+    'position-relative',
+    'mb-3'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+  {# ── Product image (in the hover-effect container) ── #}
+  <div class="product-image position-relative text-white bg-primary">
+    <div class="product-hover d-flex flex-column align-items-center justify-content-center position-absolute top-0 w-100 h-100">
+      {{ svg.getIcon('eye-fill', 34, 34, 'mb-2') }}
+      <div class="fs-md">{{ 'View product'|t }}</div>
+    </div>
+    {# Use field_product_image (TiendaVirtual custom field) #}
+    {{- product.field_product_image -}}
+    {# Fallback to Belgrade standard image fields if present #}
+    {{- product.images -}}
+    {{- product.variation_images -}}
+  </div>
+
+  {# ── Product info row: title + price ── #}
+  <div class="product-info d-flex align-items-center justify-content-between">
+    <div class="product-title fw-bold">{{ product.title }}</div>
+    <a href="{{ product_url }}" class="stretched-link"></a>
+    {# Render everything except title, images, form — price comes from variation fields #}
+    {{- product|without('title', 'field_product_image', 'variation_attributes', 'images', 'variation_images', 'variations') -}}
+    {# Show price cleanly from variation price field #}
+    <div class="product-price fw-semibold text-primary">
+      {{- product.variations -}}
+    </div>
+  </div>
+</article>
