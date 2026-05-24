@@ -1,0 +1,19 @@
+uuid: d768676a-e857-4e68-af51-f641ca14f1ce
+langcode: es
+status: true
+dependencies: {  }
+id: manual_payment
+label: 'Transferencia / Contra entrega'
+weight: 1
+plugin: manual
+configuration:
+  display_label: 'Transferencia bancaria o pago contra entrega'
+  mode: live
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  instructions:
+    value: '<p>Realiza tu transferencia a la cuenta <strong>0001-2345-6789</strong> (Banco Universal) a nombre de <em>Librería Universal S.A.</em></p><p>Envía el comprobante a <a href="mailto:pagos@libreriauniversal.com">pagos@libreriauniversal.com</a> con tu número de pedido.</p>'
+    format: basic_html
+conditions: {  }
+conditionOperator: AND

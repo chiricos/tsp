@@ -1,0 +1,19 @@
+uuid: 1676654b-dce5-448e-a8d0-f4fa0b1abd2f
+langcode: es
+status: true
+dependencies:
+  module:
+    - commerce_payment_example
+id: example_card
+label: 'Tarjeta de crédito (Pruebas)'
+weight: 0
+plugin: example_onsite
+configuration:
+  display_label: Example
+  mode: test
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  api_key: ''
+conditions: {  }
+conditionOperator: AND
