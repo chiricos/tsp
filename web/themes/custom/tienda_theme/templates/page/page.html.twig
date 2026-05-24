@@ -1,0 +1,124 @@
+{#
+/**
+ * TiendaVirtual — page.html.twig
+ * Bootstrap 5 navbar + contenido + footer.
+ */
+#}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {{ head_title }}
+  {{ page.page_top }}
+  {{ head }}
+  {{ styles }}
+  {{ scripts }}
+</head>
+<body{{ attributes }}>
+
+{{ page_top }}
+
+{# ── Navbar ─────────────────────────────────────────────────────────────── #}
+<nav class="navbar navbar-expand-lg tv-navbar sticky-top">
+  <div class="container">
+
+    {# Brand #}
+    <a class="navbar-brand" href="{{ front_page }}">
+      🛒 <span>Tienda</span>Virtual
+    </a>
+
+    <button class="navbar-toggler border-secondary" type="button"
+            data-bs-toggle="collapse" data-bs-target="#tvNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="tvNav">
+
+      {# Nav links #}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/catalog">📦 Catálogo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/busqueda-avanzada">🔧 Búsqueda avanzada</a>
+        </li>
+      </ul>
+
+      {# Quick search #}
+      <form class="d-flex me-3 tv-searchbar" method="get" action="/catalog">
+        <div class="input-group">
+          <input class="form-control form-control-sm"
+                 type="search" name="keyword"
+                 placeholder="Buscar productos…" />
+          <button class="btn btn-sm btn-primary btn-search" type="submit">🔍</button>
+        </div>
+      </form>
+
+      {# Cart #}
+      <a href="/cart" class="btn btn-warning btn-sm tv-cart-btn me-2 text-dark fw-bold">
+        🛒 Carrito
+      </a>
+
+      {# User #}
+      {% if logged_in %}
+        <div class="dropdown">
+          <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+            👤 Mi cuenta
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/user">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="/user/logout">Cerrar sesión</a></li>
+          </ul>
+        </div>
+      {% else %}
+        <a href="/user/login" class="btn btn-outline-light btn-sm me-1">Iniciar sesión</a>
+        <a href="/user/register" class="btn btn-light btn-sm">Registrarse</a>
+      {% endif %}
+
+    </div>
+  </div>
+</nav>
+
+{# ── Mensajes del sistema ────────────────────────────────────────────────── #}
+{% if page.highlighted %}
+  <div class="container mt-2">{{ page.highlighted }}</div>
+{% endif %}
+
+{# ── Contenido principal ─────────────────────────────────────────────────── #}
+<main class="container py-4" role="main">
+  {{ page.content }}
+</main>
+
+{# ── Footer ──────────────────────────────────────────────────────────────── #}
+<footer class="tv-footer mt-auto">
+  <div class="container">
+    <div class="row gy-3">
+      <div class="col-md-4">
+        <div class="tv-footer-title mb-1">🛒 TiendaVirtual</div>
+        <p class="mb-0">Tu tienda online de confianza.<br>Electrónica · Libros · Ropa · Deportes</p>
+      </div>
+      <div class="col-md-4">
+        <div class="tv-footer-title mb-1">Navegar</div>
+        <ul class="list-unstyled mb-0">
+          <li><a href="/catalog">Catálogo</a></li>
+          <li><a href="/busqueda-avanzada">Búsqueda avanzada</a></li>
+          <li><a href="/cart">Carrito</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="tv-footer-title mb-1">Mi cuenta</div>
+        <ul class="list-unstyled mb-0">
+          <li><a href="/user/login">Iniciar sesión</a></li>
+          <li><a href="/user/register">Registrarse</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="border-secondary mt-3" />
+    <p class="text-center mb-0">© {{ "now"|date("Y") }} TiendaVirtual — Drupal 10 + Commerce 2</p>
+  </div>
+</footer>
+
+{{ page_bottom }}
+</body>
+</html>

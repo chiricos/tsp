@@ -2,9 +2,122 @@
   tienda-catalog.html.twig
   Catálogo con búsqueda básica (keyword + categoría).
 #}
+{#
+  tienda-catalog.html.twig — Bootstrap 5 / Radix
+#}
 {{ attach_library('tienda_virtual/tienda_virtual') }}
 
-<div class="tv-catalog-wrapper">
+<div>
+  {# ── Search bar ───────────────────────────────────────────────────────── #}
+  <div class="card mb-4 border-0 shadow-sm">
+    <div class="card-body py-3">
+      <form method="get" action="/catalog" class="tv-searchbar">
+        <div class="row g-2 align-items-center">
+          <div class="col-12 col-md-5">
+            <div class="input-group">
+              <span class="input-group-text">🔍</span>
+              <input type="search" name="keyword" value="{{ keyword|e }}"
+                     placeholder="Buscar por nombre…"
+                     class="form-control" />
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <select name="category" class="form-select">
+              <option value="0">Todas las categorías</option>
+              {% for term in categories %}
+                <option value="{{ term.id() }}"
+                  {% if term.id() == category_id %} selected{% endif %}>
+                  {{ term.getName() }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary btn-search">Buscar</button>
+          </div>
+          <div class="col-auto">
+            <a href="/busqueda-avanzada" class="btn btn-outline-secondary">🔧 Avanzada</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {# ── Results summary ──────────────────────────────────────────────────── #}
+  <p class="tv-results-info">
+    {% if keyword or category_id %}
+      <strong>{{ total }}</strong> resultado(s)
+      {% if keyword %} para <em>"{{ keyword|e }}"</em>{% endif %}
+      {% if category_id %}
+        {% for term in categories %}
+          {% if term.id() == category_id %} en <strong>{{ term.getName() }}</strong>{% endif %}
+        {% endfor %}
+      {% endif %}
+      — <a href="/catalog">Ver todos</a>
+    {% else %}
+      <strong>{{ total }}</strong> productos en catálogo.
+    {% endif %}
+  </p>
+
+  {# ── Product grid ─────────────────────────────────────────────────────── #}
+  {% if products is not empty %}
+    <div class="tv-grid">
+      {% for p in products %}
+        <article class="tv-card" data-id="{{ p.id }}"
+                 data-url="{{ p.url }}"
+                 data-title="{{ p.title|e('html_attr') }}"
+                 data-price="{{ p.price_display|e('html_attr') }}"
+                 data-stock="{{ p.stock }}"
+                 data-category="{{ p.category|e('html_attr') }}"
+                 data-body="{{ p.body|e('html_attr') }}">
+
+          {# Image — click → modal #}
+          <div class="tv-card-img-wrap tv-card-image-link">
+            <img src="{{ p.image_url }}" alt="{{ p.title }}"
+                 loading="lazy"
+                 onerror="this.src='/modules/custom/tienda_virtual/images/no-image.png'" />
+            <div class="tv-zoom-hint">🔍</div>
+          </div>
+
+          <div class="tv-card-body">
+            {% if p.category %}
+              <span class="badge bg-secondary">{{ p.category }}</span>
+            {% endif %}
+
+            <h3 class="tv-card-title">
+              <a href="{{ p.url }}">{{ p.title }}</a>
+            </h3>
+
+            {% if p.body %}
+              <p class="tv-card-desc">{{ p.body }}</p>
+            {% endif %}
+
+            <div class="tv-card-price">{{ p.price_display }}</div>
+
+            <div class="tv-card-stock">
+              {% if p.stock > 0 %}
+                <span class="tv-stock-ok">✅ {{ p.stock }} en stock</span>
+              {% else %}
+                <span class="tv-stock-empty">❌ Sin stock</span>
+              {% endif %}
+            </div>
+
+            <a href="{{ p.url }}" class="btn btn-warning w-100 fw-bold text-dark">
+              🛒 Ver producto
+            </a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div class="text-center py-5">
+      <div class="display-1">😕</div>
+      <p class="lead">No se encontraron productos.</p>
+      <a href="/catalog" class="btn btn-primary">Ver catálogo completo</a>
+    </div>
+  {% endif %}
+</div>
 
   {# ── Search bar ─────────────────────────────────────────────────────── #}
   <section class="tv-search-bar">

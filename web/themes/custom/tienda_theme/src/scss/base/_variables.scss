@@ -1,0 +1,26 @@
+// TiendaVirtual — Bootstrap 5 variable overrides
+$primary:        #1a56db;
+$secondary:      #6c757d;
+$success:        #198754;
+$danger:         #dc3545;
+$warning:        #f97316;   // naranja CTA (carrito)
+$info:           #0ea5e9;
+$light:          #f8fafc;
+$dark:           #1e293b;
+
+$body-bg:        #f1f5f9;
+$body-color:     #1e293b;
+
+$font-family-sans-serif: 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-size-base:  0.95rem;
+$headings-font-weight: 700;
+
+$border-radius:   0.5rem;
+$border-radius-lg: 0.75rem;
+
+$navbar-dark-bg:  $dark;
+$link-color:      $primary;
+
+$card-border-color:      rgba(0,0,0,.08);
+$card-box-shadow:        0 2px 8px rgba(0,0,0,.07);
+$card-cap-bg:            transparent;

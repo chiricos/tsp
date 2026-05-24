@@ -1,0 +1,5 @@
+global:
+  version: VERSION
+  css:
+    theme:
+      css/tienda_store.css: { weight: 10 }

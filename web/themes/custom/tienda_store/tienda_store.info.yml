@@ -1,0 +1,25 @@
+name: Tienda Store
+description: Sub-theme of Belgrade for TiendaVirtual - Commerce Kickstart style
+screenshot: false
+type: theme
+core_version_requirement: ^10 || ^11
+base theme: belgrade
+
+regions:
+  navigation: 'Navigation'
+  top_bar: 'Top bar'
+  header: 'Header'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  hidden: 'HIDDEN'
+
+libraries:
+  - tienda_store/global
+
+# version: '1.0.0'

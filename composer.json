@@ -16,13 +16,19 @@
     ],
     "require": {
         "composer/installers": "^2.0",
+        "drupal/belgrade": "^3",
+        "drupal/bootstrap_layout_builder": "^2.2",
+        "drupal/bootstrap_styles": "^1.2",
         "drupal/commerce": "^2",
         "drupal/core-composer-scaffold": "^10.6",
         "drupal/core-project-message": "^10.6",
         "drupal/core-recommended": "^10.6",
         "drupal/facets": "^2",
+        "drupal/field_group": "^4.0",
+        "drupal/radix": "^6.0",
         "drupal/search_api": "^1",
         "drupal/search_api_db": "^1",
+        "drupal/token": "^1.17",
         "drush/drush": "^12"
     },
     "conflict": {

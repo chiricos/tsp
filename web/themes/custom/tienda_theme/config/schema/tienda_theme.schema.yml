@@ -1,0 +1,5 @@
+# Schema for the configuration files of the tienda_theme theme.
+
+tienda_theme.settings:
+  type: theme_settings
+  label: 'tienda_theme settings'

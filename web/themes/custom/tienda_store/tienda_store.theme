@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Tienda Store sub-theme preprocess hooks.
+ *
+ * Passes product data to the front-page template so it can render
+ * "New products" and "Best sellers" sections without relying on Views blocks
+ * in regions (which would duplicate layout).
+ */
+
+use Drupal\commerce_product\Entity\Product;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess_page() for the front page.
+ */
+function tienda_store_preprocess_page(array &$variables): void {
+  if (!$variables['is_front']) {
+    return;
+  }
+
+  // Add catalog URL.
+  $variables['catalog_url'] = Url::fromUri('internal:/productos')->toString();
+
+  // Load last 4 products (new arrivals).
+  $variables['featured_products'] = _tienda_store_load_products(4, 'DESC');
+
+  // Load 4 oldest active products (simulate "best sellers").
+  $variables['bestseller_products'] = _tienda_store_load_products(4, 'ASC');
+}
+
+/**
+ * Helper: load products rendered as teasers.
+ *
+ * @param int $limit
+ *   Number of products to load.
+ * @param string $direction
+ *   Sort direction: 'DESC' for newest, 'ASC' for oldest.
+ *
+ * @return array
+ *   Array of render arrays.
+ */
+function _tienda_store_load_products(int $limit, string $direction): array {
+  $product_ids = \Drupal::entityQuery('commerce_product')
+    ->condition('status', 1)
+    ->sort('created', $direction)
+    ->range(0, $limit)
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if (empty($product_ids)) {
+    return [];
+  }
+
+  $products = Product::loadMultiple($product_ids);
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('commerce_product');
+  $rendered = [];
+
+  foreach ($products as $product) {
+    $rendered[] = $view_builder->view($product, 'teaser');
+  }
+
+  return $rendered;
+}

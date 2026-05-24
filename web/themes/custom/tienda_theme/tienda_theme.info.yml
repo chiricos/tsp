@@ -1,0 +1,26 @@
+name: tienda_theme
+description: "tienda_theme theme based on <a href='https://www.drupal.org/project/radix' target='_blank'>Radix 6.x</a> and Bootstrap 5.x"
+screenshot: screenshot.png
+'alt text': 'tienda_theme theme screenshot'
+core_version_requirement: ^10
+engine: twig
+type: theme
+'base theme': radix
+'interface translation project': tienda_theme
+'interface translation server pattern': themes/custom/tienda_theme/translations/%language.po
+regions:
+  navbar_branding: 'Navbar branding'
+  navbar_left: 'Navbar left'
+  navbar_right: 'Navbar right'
+  header: Header
+  content: Content
+  page_bottom: 'Page bottom'
+  footer: Footer
+libraries:
+  - tienda_theme/style
+ckeditor5-stylesheets:
+  - build/css/main.style.css
+version: 6.0.3
+project: radix
+datestamp: 1779371369
+generator: 'radix_starterkit:6.0.3'

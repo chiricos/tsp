@@ -1,10 +1,123 @@
 {#
-  tienda-search-advanced.html.twig
-  Búsqueda avanzada: keyword + categoría + rango de precio + orden.
+  tienda-search-advanced.html.twig — Bootstrap 5 / Radix
 #}
 {{ attach_library('tienda_virtual/tienda_virtual') }}
 
-<div class="tv-catalog-wrapper">
+<div>
+  {# ── Advanced search form ─────────────────────────────────────────────── #}
+  <div class="card mb-4 border-0 shadow-sm">
+    <div class="card-body">
+      <h2 class="h5 mb-3 fw-bold">🔧 Búsqueda Avanzada</h2>
+      <form method="get" action="/busqueda-avanzada" class="tv-searchbar">
+        <div class="row g-3">
+
+          <div class="col-12 col-md-4">
+            <label class="form-label small fw-semibold">Nombre / descripción</label>
+            <input type="search" name="keyword" value="{{ keyword|e }}"
+                   placeholder="Ej: laptop, nike, yoga…" class="form-control" />
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label small fw-semibold">Categoría</label>
+            <select name="category" class="form-select">
+              <option value="0">Todas</option>
+              {% for term in categories %}
+                <option value="{{ term.id() }}"
+                  {% if term.id() == category_id %} selected{% endif %}>
+                  {{ term.getName() }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold">Precio mín. (USD)</label>
+            <input type="number" name="price_min" value="{{ price_min|e }}"
+                   min="0" step="0.01" placeholder="0.00" class="form-control" />
+          </div>
+
+          <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold">Precio máx. (USD)</label>
+            <input type="number" name="price_max" value="{{ price_max|e }}"
+                   min="0" step="0.01" placeholder="9999" class="form-control" />
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label small fw-semibold">Ordenar por</label>
+            <select name="sort" class="form-select">
+              <option value="title_asc"  {% if sort == 'title_asc'  %} selected{% endif %}>Nombre A→Z</option>
+              <option value="title_desc" {% if sort == 'title_desc' %} selected{% endif %}>Nombre Z→A</option>
+              <option value="price_asc"  {% if sort == 'price_asc'  %} selected{% endif %}>Precio menor a mayor</option>
+              <option value="price_desc" {% if sort == 'price_desc' %} selected{% endif %}>Precio mayor a menor</option>
+            </select>
+          </div>
+
+          <div class="col-12 d-flex gap-2 flex-wrap">
+            <button type="submit" class="btn btn-primary">🔍 Buscar</button>
+            <a href="/busqueda-avanzada" class="btn btn-outline-secondary">✕ Limpiar</a>
+            <a href="/catalog" class="btn btn-outline-dark">← Catálogo</a>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {# ── Results summary ──────────────────────────────────────────────────── #}
+  <p class="tv-results-info">
+    <strong>{{ total }}</strong> producto(s) encontrado(s).
+  </p>
+
+  {# ── Product grid ─────────────────────────────────────────────────────── #}
+  {% if products is not empty %}
+    <div class="tv-grid">
+      {% for p in products %}
+        <article class="tv-card" data-id="{{ p.id }}"
+                 data-url="{{ p.url }}"
+                 data-title="{{ p.title|e('html_attr') }}"
+                 data-price="{{ p.price_display|e('html_attr') }}"
+                 data-stock="{{ p.stock }}"
+                 data-category="{{ p.category|e('html_attr') }}"
+                 data-body="{{ p.body|e('html_attr') }}">
+
+          <div class="tv-card-img-wrap tv-card-image-link">
+            <img src="{{ p.image_url }}" alt="{{ p.title }}"
+                 loading="lazy"
+                 onerror="this.src='/modules/custom/tienda_virtual/images/no-image.png'" />
+            <div class="tv-zoom-hint">🔍</div>
+          </div>
+
+          <div class="tv-card-body">
+            {% if p.category %}
+              <span class="badge bg-secondary">{{ p.category }}</span>
+            {% endif %}
+            <h3 class="tv-card-title"><a href="{{ p.url }}">{{ p.title }}</a></h3>
+            {% if p.body %}
+              <p class="tv-card-desc">{{ p.body }}</p>
+            {% endif %}
+            <div class="tv-card-price">{{ p.price_display }}</div>
+            <div class="tv-card-stock">
+              {% if p.stock > 0 %}
+                <span class="tv-stock-ok">✅ {{ p.stock }} en stock</span>
+              {% else %}
+                <span class="tv-stock-empty">❌ Sin stock</span>
+              {% endif %}
+            </div>
+            <a href="{{ p.url }}" class="btn btn-warning w-100 fw-bold text-dark">
+              🛒 Ver producto
+            </a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-5">
+      <div class="display-1">😕</div>
+      <p class="lead">No se encontraron productos con esos filtros.</p>
+      <a href="/busqueda-avanzada" class="btn btn-outline-secondary">Limpiar filtros</a>
+    </div>
+  {% endif %}
+</div>
 
   {# ── Advanced search form ─────────────────────────────────────────────── #}
   <section class="tv-advsearch-panel">

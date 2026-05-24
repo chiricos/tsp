@@ -1,0 +1,163 @@
+/**
+ * Tienda Store - Belgrade sub-theme custom styles.
+ * Replicates the Commerce Kickstart demo visual style.
+ */
+
+/* ======================================================
+   Homepage Hero / Carousel
+   ====================================================== */
+.ts-hero .carousel-item {
+  min-height: 460px;
+  background-color: var(--bs-primary);
+}
+
+.ts-hero .carousel-item img {
+  object-fit: cover;
+  height: 460px;
+}
+
+.ts-hero .carousel-caption {
+  bottom: 3rem;
+  text-align: left;
+}
+
+.ts-hero .carousel-caption h2 {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+
+/* ======================================================
+   Homepage Product Sections
+   ====================================================== */
+.ts-section {
+  padding: 3.5rem 0;
+}
+
+.ts-section + .ts-section {
+  border-top: 1px solid #eee;
+}
+
+.ts-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.ts-section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--bs-primary);
+  margin-top: 6px;
+}
+
+/* Product cards in sections */
+.ts-section .card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.ts-section .card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  transform: translateY(-3px);
+}
+
+.ts-section .card img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ts-section .card .btn-primary {
+  border-radius: 0;
+}
+
+/* ======================================================
+   Testimonial Banner
+   ====================================================== */
+.ts-testimonial {
+  background: var(--bs-dark);
+  color: #fff;
+  padding: 5rem 0;
+  text-align: center;
+  margin: 3rem 0 0;
+}
+
+.ts-testimonial blockquote {
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.ts-testimonial .stars {
+  color: #ffc107;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.ts-testimonial cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ======================================================
+   View "all products" link
+   ====================================================== */
+.ts-view-all {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.ts-view-all a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ======================================================
+   Catalog page adjustments
+   ====================================================== */
+.view-product-catalog .views-row {
+  display: flex;
+}
+
+/* Card image height standardisation in catalog */
+.view-product-catalog .card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ======================================================
+   Navigation tweaks
+   ====================================================== */
+.navbar-brand img {
+  max-height: 40px;
+}
+
+/* ======================================================
+   Footer
+   ====================================================== */
+footer.site-footer,
+.region-footer {
+  background: #1a1a2e;
+  color: #ccc;
+  padding: 3rem 0 1.5rem;
+}
+
+.region-footer a {
+  color: #adb5bd;
+}
+
+.region-footer a:hover {
+  color: #fff;
+}
