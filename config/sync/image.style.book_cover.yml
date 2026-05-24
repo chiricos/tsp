@@ -1,0 +1,15 @@
+uuid: d9bee7e9-c2a4-40ce-9e0e-9921f1a4623d
+langcode: es
+status: true
+dependencies: {  }
+name: book_cover
+label: 'Portada de libro (300×450)'
+effects:
+  3bb0e63a-037b-44f9-bd63-dc74589a806c:
+    uuid: 3bb0e63a-037b-44f9-bd63-dc74589a806c
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 300
+      height: 450
+      anchor: center-center
