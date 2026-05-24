@@ -1,0 +1,87 @@
+{#
+ * Partial: footer compartido entre page.html.twig y page--front.html.twig
+ #}
+<footer role="contentinfo" class="ts-footer">
+  <div class="ts-footer__main">
+    <div class="container-xl">
+      <div class="row gy-5">
+
+        {# Col 1 — Marca + descripción #}
+        <div class="col-lg-4 col-md-6">
+          <a href="{{ path('<front>') }}" rel="home" class="ts-footer__logo d-inline-block mb-3">
+            <img src="/themes/custom/tienda_store/logo.png" alt="{{ 'Librería Universal'|t }}" height="48">
+          </a>
+          <p class="ts-footer__desc">
+            {{ 'Tu librería de confianza. Más de 10&nbsp;000 títulos en literatura, ciencia, historia, arte y mucho más. Envíos a todo el país.'|t|raw }}
+          </p>
+          <div class="ts-footer__social d-flex gap-3 mt-3">
+            <a href="#" aria-label="Facebook" class="ts-footer__social-link">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="ts-footer__social-link">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter / X" class="ts-footer__social-link">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        {# Col 2 — Tienda #}
+        <div class="col-lg-2 col-md-3 col-6">
+          <h5 class="ts-footer__heading">{{ 'Tienda'|t }}</h5>
+          <ul class="ts-footer__links list-unstyled">
+            <li><a href="/productos">{{ 'Catálogo'|t }}</a></li>
+            <li><a href="/productos">{{ 'Novedades'|t }}</a></li>
+            <li><a href="/productos">{{ 'Más vendidos'|t }}</a></li>
+            <li><a href="/productos">{{ 'Ofertas'|t }}</a></li>
+            <li><a href="/cart">{{ 'Mi carrito'|t }}</a></li>
+          </ul>
+        </div>
+
+        {# Col 3 — Información #}
+        <div class="col-lg-2 col-md-3 col-6">
+          <h5 class="ts-footer__heading">{{ 'Información'|t }}</h5>
+          <ul class="ts-footer__links list-unstyled">
+            <li><a href="/contact">{{ 'Contacto'|t }}</a></li>
+            <li><a href="#">{{ 'Sobre nosotros'|t }}</a></li>
+            <li><a href="#">{{ 'Envíos y devoluciones'|t }}</a></li>
+            <li><a href="#">{{ 'Preguntas frecuentes'|t }}</a></li>
+            <li><a href="#">{{ 'Política de privacidad'|t }}</a></li>
+          </ul>
+        </div>
+
+        {# Col 4 — Contacto #}
+        <div class="col-lg-4 col-md-6">
+          <h5 class="ts-footer__heading">{{ 'Contacto'|t }}</h5>
+          <ul class="ts-footer__contact list-unstyled">
+            <li>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ 'Calle Libro 123, Ciudad, País'|t }}
+            </li>
+            <li>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.09 6.09l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+              <a href="tel:+1234567890">+1 (234) 567-890</a>
+            </li>
+            <li>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@libreriauniversal.com">info@libreriauniversal.com</a>
+            </li>
+            <li>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              {{ 'Lun – Vie: 9:00 – 18:00'|t }}
+            </li>
+          </ul>
+        </div>
+
+      </div>{# /row #}
+    </div>{# /container-xl #}
+  </div>{# /ts-footer__main #}
+
+  <div class="ts-footer__bottom">
+    <div class="container-xl d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+      <span>© {{ "now"|date("Y") }} Librería Universal. {{ 'Todos los derechos reservados.'|t }}</span>
+      <span class="opacity-50 small">{{ 'Powered by'|t }} <a href="https://www.drupal.org" target="_blank" rel="noopener" class="text-white opacity-75">Drupal</a></span>
+    </div>
+  </div>
+</footer>

@@ -134,11 +134,7 @@
   {% endblock %}
 
   {% block footer %}
-    {% if page.footer %}
-      <footer role="contentinfo">
-        {{ page.footer }}
-      </footer>
-    {% endif %}
+    {% include directory ~ '/templates/page/_footer.html.twig' %}
   {% endblock %}
 
   {% block page_bottom %}

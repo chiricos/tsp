@@ -172,21 +172,6 @@
       </section>
     {% endif %}
 
-    {# ── TESTIMONIAL ── #}
-    <section class="ts-testimonial">
-      <div class="container-xl">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <blockquote>
-              "{{ 'Excelente tienda. Los productos llegan rápido, bien empaquetados y la atención al cliente es increíble. ¡100% recomendado!'|t }}"
-            </blockquote>
-            <div class="stars">★★★★★</div>
-            <cite>{{ 'María García, cliente satisfecha'|t }}</cite>
-          </div>
-        </div>
-      </div>
-    </section>
-
     {# Blocks in the content region (admin tabs etc.) #}
     {% if page.content %}
       <div class="visually-hidden">{{ page.content }}</div>
@@ -195,14 +180,7 @@
   </main>
   {# / MAIN #}
 
-  {# FOOTER #}
-  {% if page.footer %}
-    <footer role="contentinfo" class="site-footer">
-      <div class="container-xl">
-        {{ page.footer }}
-      </div>
-    </footer>
-  {% endif %}
+  {% include directory ~ '/templates/page/_footer.html.twig' %}
 
   {% if page_bottom %}{{ page_bottom }}{% endif %}
 </div>
