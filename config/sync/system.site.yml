@@ -2,7 +2,7 @@ _core:
   default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
 langcode: es
 uuid: 0f5ae468-f2ca-47c0-bd69-1c70353f1347
-name: TiendaVirtual
+name: 'Librería Universal'
 mail: admin@example.com
 slogan: 'Tu tienda online de confianza'
 page:

@@ -138,10 +138,20 @@
 }
 
 /* ======================================================
-   Navigation tweaks
+   Navigation - Logo
    ====================================================== */
-.navbar-brand img {
-  max-height: 40px;
+.navbar-brand img,
+.site-logo img {
+  max-height: 48px;
+  width: auto;
+}
+
+/* Ensure logo doesn't overflow on mobile */
+@media (max-width: 576px) {
+  .navbar-brand img,
+  .site-logo img {
+    max-height: 36px;
+  }
 }
 
 /* ======================================================
