@@ -1,0 +1,25 @@
+uuid: b2f20fc6-d31e-4ebe-8629-90385130125d
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_theme
+_core:
+  default_config_hash: Biat9kejrHO20KaHIKQmCv-MpDCEMwKukHqOS2wZCZw
+id: tienda_theme_branding
+theme: tienda_theme
+region: navbar_branding
+weight: -1
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Marca del sitio'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

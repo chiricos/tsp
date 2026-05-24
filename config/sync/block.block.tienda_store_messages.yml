@@ -1,0 +1,20 @@
+uuid: 3f879485-7acc-4ca3-89b8-d06d654af07f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_messages
+theme: tienda_store
+region: highlighted
+weight: -8
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

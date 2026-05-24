@@ -1,0 +1,18 @@
+uuid: 2e0b95e0-6c1f-4cc4-9f32-ba1aa7dd5b43
+langcode: en
+status: true
+dependencies:
+  theme:
+    - tienda_store
+id: tienda_store_local_actions
+theme: tienda_store
+region: content
+weight: -8
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,25 @@
+uuid: 1cf19315-7740-4396-a221-f3ad93c0160b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - system
+  theme:
+    - belgrade
+id: belgrade_social_navigation
+theme: belgrade
+region: navigation
+weight: 0
+provider: null
+plugin: 'system_menu_block:social'
+settings:
+  id: 'system_menu_block:social'
+  label: Social
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

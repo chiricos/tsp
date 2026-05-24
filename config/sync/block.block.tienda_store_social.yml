@@ -1,0 +1,25 @@
+uuid: 37e5e180-0a2c-42e0-bf0b-148a280fdf6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_social
+theme: tienda_store
+region: footer
+weight: -4
+provider: null
+plugin: 'system_menu_block:social'
+settings:
+  id: 'system_menu_block:social'
+  label: "Let's get social"
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

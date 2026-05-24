@@ -1,0 +1,26 @@
+uuid: 1341c942-c19b-43b4-89b2-ee78f0c38f36
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart
+  theme:
+    - belgrade
+id: belgrade_shopping_cart
+theme: belgrade
+region: top_bar
+weight: -10
+provider: null
+plugin: commerce_cart
+settings:
+  id: commerce_cart
+  label: 'Shopping Cart'
+  label_display: '0'
+  provider: commerce_cart
+  dropdown: true
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: /cart

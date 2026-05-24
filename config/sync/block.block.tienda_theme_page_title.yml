@@ -1,0 +1,20 @@
+uuid: d23c7798-cf4d-458c-91bb-02d73b2bc116
+langcode: es
+status: true
+dependencies:
+  theme:
+    - tienda_theme
+_core:
+  default_config_hash: gesWpejyuRAj6lNVtW2ZE46psarGwjEXD0Fbe_mzWm4
+id: tienda_theme_page_title
+theme: tienda_theme
+region: header
+weight: -2
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Título de la página'
+  label_display: '0'
+  provider: core
+visibility: {  }

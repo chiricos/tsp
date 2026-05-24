@@ -1,0 +1,13 @@
+uuid: eba2e414-ff5d-4801-b1cb-d7cb0551ff46
+langcode: es
+status: true
+dependencies:
+  module:
+    - search_api_db
+id: productos_db
+name: 'Productos (base de datos)'
+description: ''
+backend: search_api_db
+backend_config:
+  database: 'default:default'
+  min_chars: 1

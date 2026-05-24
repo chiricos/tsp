@@ -1,0 +1,18 @@
+uuid: 8cc377c9-86f2-407a-a07e-04f4f6ee8e5a
+langcode: es
+status: true
+dependencies:
+  enforced:
+    module:
+      - commerce_order
+_core:
+  default_config_hash: zyTJjisGAiNCmSVzU73UWGY2joBWA3QXvlcjDDIuWcs
+id: order_default
+label: 'Por defecto'
+targetEntityType: commerce_order
+plugin: infinite
+configuration:
+  pattern: '[pattern:number]'
+  initial_number: 1
+  padding: 0
+  per_store_sequence: true

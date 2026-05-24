@@ -1,0 +1,20 @@
+uuid: 13910401-71f7-4735-8ced-fb24e8b69c1e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_content
+theme: tienda_store
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

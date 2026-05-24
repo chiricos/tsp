@@ -1,0 +1,22 @@
+uuid: 4022ad8d-ed7a-45ba-849d-531d2f8a6170
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_theme
+_core:
+  default_config_hash: BPKi4tMXYbm-S15KXeXuEPdxn7dGZIYwzI1w5HRHdbU
+id: tienda_theme_breadcrumbs
+theme: tienda_theme
+region: header
+weight: -5
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: 'Enlaces de ayuda a la navegación'
+  label_display: '0'
+  provider: system
+visibility: {  }

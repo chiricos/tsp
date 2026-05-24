@@ -1,0 +1,22 @@
+uuid: f7c3495a-9e50-464b-bfc3-57563657b4d9
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_theme
+_core:
+  default_config_hash: Dzkl9rKGTxEghQ8eG6Ia3GPTifiP8wVJ_zGWkXS_9TY
+id: tienda_theme_content
+theme: tienda_theme
+region: content
+weight: -5
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenido principal de la página'
+  label_display: '0'
+  provider: system
+visibility: {  }

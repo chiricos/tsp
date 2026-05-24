@@ -1,0 +1,20 @@
+uuid: ab699025-3b0e-4e91-ba77-03b6c239a215
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_powered
+theme: tienda_store
+region: footer
+weight: -7
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

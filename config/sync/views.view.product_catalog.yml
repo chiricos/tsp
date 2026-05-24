@@ -1,0 +1,159 @@
+uuid: debbb090-c550-480c-871f-23bd9abca8ed
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.commerce_product.teaser
+  module:
+    - commerce_product
+id: product_catalog
+label: 'Product catalog'
+module: views
+description: 'Catálogo de productos con filtros'
+tag: commerce
+base_table: commerce_product_field_data
+base_field: product_id
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Products
+      fields: {  }
+      pager:
+        type: mini
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 12
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Buscar
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: commerce_product_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+          operator: DESC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: commerce_product_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:commerce_product'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      css_class: 'row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4'
+      use_ajax: false
+      use_more: false
+      use_more_always: true
+      use_more_text: more
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+      tags: {  }
+  page_1:
+    id: page_1
+    display_title: Catálogo
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: productos
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+      tags: {  }

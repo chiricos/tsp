@@ -1,0 +1,25 @@
+uuid: c078e4c8-36b2-4556-82c2-27c3523377da
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_account_menu
+theme: tienda_store
+region: top_bar
+weight: -6
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

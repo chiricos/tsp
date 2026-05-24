@@ -1,0 +1,45 @@
+langcode: es
+status: true
+dependencies: {  }
+id: productos
+name: 'Índice de Productos'
+description: ''
+read_only: false
+field_settings:
+  body:
+    label: Cuerpo
+    datasource_id: 'entity:commerce_product'
+    property_path: body
+    type: text
+    boost: 1.0
+    dependencies: {  }
+  status:
+    label: Estado
+    datasource_id: 'entity:commerce_product'
+    property_path: status
+    type: boolean
+    boost: 1.0
+    dependencies: {  }
+  title:
+    label: Título
+    datasource_id: 'entity:commerce_product'
+    property_path: title
+    type: text
+    boost: 5.0
+    dependencies: {  }
+datasource_settings:
+  'entity:commerce_product':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  index_directly: true
+server: productos_db

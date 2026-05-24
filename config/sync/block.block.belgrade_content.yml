@@ -1,0 +1,20 @@
+uuid: 8302ccaa-4be2-4419-8ce6-d5b43125ef78
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - belgrade
+id: belgrade_content
+theme: belgrade
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

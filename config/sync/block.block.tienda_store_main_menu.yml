@@ -1,0 +1,25 @@
+uuid: e0af27a2-66b3-4920-b6f9-bf1228480c78
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_main_menu
+theme: tienda_store
+region: navigation
+weight: -7
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

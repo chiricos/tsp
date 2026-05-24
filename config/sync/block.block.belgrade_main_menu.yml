@@ -1,0 +1,24 @@
+uuid: e65dba0e-da38-47c0-b9aa-d045160c99eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - belgrade
+id: belgrade_main_menu
+theme: belgrade
+region: navigation
+weight: -7
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+visibility: {  }

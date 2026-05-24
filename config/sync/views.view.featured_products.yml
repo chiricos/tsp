@@ -1,0 +1,116 @@
+uuid: 8fce3de2-134d-4bed-83e0-cc91965ab534
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.commerce_product.teaser
+  module:
+    - commerce_product
+id: featured_products
+label: 'Featured Products'
+module: views
+description: 'Últimos productos para la homepage'
+tag: commerce
+base_table: commerce_product_field_data
+base_field: product_id
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'New products'
+      fields: {  }
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 4
+      exposed_form:
+        type: basic
+        options: {  }
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: commerce_product_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+          exposed: false
+          operator: DESC
+      filters:
+        status:
+          id: status
+          table: commerce_product_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:commerce_product'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options: {  }
+      css_class: 'row row-cols-2 row-cols-md-4 g-4'
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+      tags: {  }
+  block_bestsellers:
+    id: block_bestsellers
+    display_title: 'Block: Best sellers'
+    display_plugin: block
+    position: 2
+    display_options:
+      title: 'Best sellers'
+      sorts:
+        created:
+          id: created
+          table: commerce_product_field_data
+          field: created
+          plugin_id: date
+          order: ASC
+          exposed: false
+          operator: ASC
+      display_extenders: {  }
+      block_description: 'Best sellers'
+      block_category: Tienda
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+      tags: {  }
+  block_new:
+    id: block_new
+    display_title: 'Block: New products'
+    display_plugin: block
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'New products'
+      block_category: Tienda
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+      tags: {  }

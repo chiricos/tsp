@@ -1,0 +1,30 @@
+uuid: 8d9bd68a-3a09-4425-9f1a-f9555f633f5c
+langcode: es
+status: true
+dependencies:
+  config:
+    - views.view.featured_products
+  module:
+    - system
+    - views
+  theme:
+    - belgrade
+id: belgrade_featured_products_new
+theme: belgrade
+region: content
+weight: 1
+provider: null
+plugin: 'views_block:featured_products-block_new'
+settings:
+  id: 'views_block:featured_products-block_new'
+  label: 'New products'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '<front>'

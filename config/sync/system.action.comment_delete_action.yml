@@ -1,0 +1,13 @@
+uuid: 6c682ca6-eeff-4a57-b58d-4ffdbd04d3d0
+langcode: es
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: comment_delete_action
+label: 'Eliminar comentario'
+type: comment
+plugin: 'entity:delete_action:comment'
+configuration: {  }

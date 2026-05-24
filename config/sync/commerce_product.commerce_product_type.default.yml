@@ -1,0 +1,16 @@
+uuid: e04e775f-8b73-44a2-b928-d1f3e5bc7095
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hwJoqnxqBS0fPM3s6FccZ2bWaq9LneRYLzFk-wlJWjs
+id: default
+label: 'Por defecto'
+traits: {  }
+locked: false
+description: ''
+variationType: default
+variationTypes:
+  - default
+multipleVariations: true
+injectVariationFields: true

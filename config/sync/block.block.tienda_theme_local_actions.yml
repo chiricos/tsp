@@ -1,0 +1,20 @@
+uuid: a243cac4-41b6-4680-a3e0-1f4efca8a856
+langcode: es
+status: true
+dependencies:
+  theme:
+    - tienda_theme
+_core:
+  default_config_hash: GJ45wCLZL57JHmzUOlRgGnhwH-J-jChjc0TF1rBmrN0
+id: tienda_theme_local_actions
+theme: tienda_theme
+region: header
+weight: -4
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Acciones principales de administración'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 6db34d3d-0df5-4b42-b3ae-41b7e928bb6c
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_theme
+_core:
+  default_config_hash: SMP9wl8b7l8shRkk1veBPqJCmweaAt45du_bOOx4ihQ
+id: tienda_theme_messages
+theme: tienda_theme
+region: header
+weight: -3
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Mensajes de estado'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,25 @@
+uuid: 8ad8848a-b87f-4794-850f-dd386246378f
+langcode: en
+status: true
+dependencies:
+  theme:
+    - belgrade
+id: belgrade_local_tasks
+theme: belgrade
+region: content
+weight: -9
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/user/*\r\n"

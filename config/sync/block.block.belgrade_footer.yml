@@ -1,0 +1,24 @@
+uuid: f15b9834-f57a-4ef3-acf5-ed2f65f8bebd
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - belgrade
+id: belgrade_footer
+theme: belgrade
+region: footer
+weight: -5
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Footer menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+visibility: {  }

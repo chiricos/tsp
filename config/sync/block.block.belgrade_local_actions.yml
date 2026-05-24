@@ -1,0 +1,18 @@
+uuid: d158b38f-ee85-45c2-bbe0-9e6d50e21a58
+langcode: en
+status: true
+dependencies:
+  theme:
+    - belgrade
+id: belgrade_local_actions
+theme: belgrade
+region: content
+weight: -8
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

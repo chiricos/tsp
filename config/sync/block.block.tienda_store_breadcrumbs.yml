@@ -1,0 +1,24 @@
+uuid: 7a429d32-cf3a-41f1-baba-da4009dd1229
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_breadcrumbs
+theme: tienda_store
+region: highlighted
+weight: -7
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/cart*\r\n/checkout*\r\n<front>"

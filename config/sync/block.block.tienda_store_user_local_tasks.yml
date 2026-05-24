@@ -1,0 +1,27 @@
+uuid: 10b22f81-cdd3-4ce1-92d1-93b3f3b20e66
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tienda_store
+id: tienda_store_user_local_tasks
+theme: tienda_store
+region: sidebar_first
+weight: -9
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: "/user/*\r\n"
