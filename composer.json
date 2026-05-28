@@ -25,7 +25,9 @@
         "drupal/core-recommended": "^10.6",
         "drupal/facets": "^2",
         "drupal/field_group": "^4.0",
+        "drupal/pathauto": "^1.15",
         "drupal/radix": "^6.0",
+        "drupal/redirect": "^1.13",
         "drupal/search_api": "^1",
         "drupal/search_api_db": "^1",
         "drupal/token": "^1.17",
@@ -45,7 +47,15 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "php-http/discovery": true
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "audit": {
+            "ignore": [
+                "SA-CORE-2026-001",
+                "SA-CORE-2026-002",
+                "SA-CORE-2026-004",
+                "PKSA-dwsq-ppd2-mb1x"
+            ]
+        }
     },
     "extra": {
         "drupal-scaffold": {

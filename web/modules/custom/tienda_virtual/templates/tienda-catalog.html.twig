@@ -218,6 +218,58 @@
       {% endfor %}
     </div>
 
+    {# ── Paginador ────────────────────────────────────────────────────────── #}
+    {% if total_pages > 1 %}
+      {%- set base_query = '' -%}
+      {%- if keyword -%}{%- set base_query = base_query ~ '&keyword=' ~ keyword|url_encode -%}{%- endif -%}
+      {%- if category_id -%}{%- set base_query = base_query ~ '&category=' ~ category_id -%}{%- endif -%}
+
+      <nav class="tv-pagination" aria-label="Paginación del catálogo">
+        <div class="tv-pagination__info">
+          Página <strong>{{ page }}</strong> de <strong>{{ total_pages }}</strong>
+          <span class="tv-pagination__total">· {{ total }} productos</span>
+        </div>
+
+        <ul class="tv-pagination__list">
+
+          <li class="tv-pagination__item{% if page == 1 %} is-disabled{% endif %}">
+            {% if page > 1 %}
+              <a href="?page={{ page - 1 }}{{ base_query }}" class="tv-pagination__btn tv-pagination__btn--nav" aria-label="Página anterior">
+                ‹ Anterior
+              </a>
+            {% else %}
+              <span class="tv-pagination__btn tv-pagination__btn--nav">‹ Anterior</span>
+            {% endif %}
+          </li>
+
+          {% for p in page_range %}
+            {% if p == 0 %}
+              <li class="tv-pagination__item tv-pagination__item--ellipsis">
+                <span class="tv-pagination__ellipsis">…</span>
+              </li>
+            {% else %}
+              <li class="tv-pagination__item{% if p == page %} is-active{% endif %}">
+                <a href="?page={{ p }}{{ base_query }}"
+                   class="tv-pagination__btn{% if p == page %} tv-pagination__btn--active{% endif %}"
+                   {% if p == page %}aria-current="page"{% endif %}>{{ p }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+
+          <li class="tv-pagination__item{% if page == total_pages %} is-disabled{% endif %}">
+            {% if page < total_pages %}
+              <a href="?page={{ page + 1 }}{{ base_query }}" class="tv-pagination__btn tv-pagination__btn--nav" aria-label="Página siguiente">
+                Siguiente ›
+              </a>
+            {% else %}
+              <span class="tv-pagination__btn tv-pagination__btn--nav">Siguiente ›</span>
+            {% endif %}
+          </li>
+
+        </ul>
+      </nav>
+    {% endif %}
+
   {% else %}
     <div class="tv-empty">
       <p>😕 No se encontraron productos con los criterios indicados.</p>

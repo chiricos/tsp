@@ -329,3 +329,111 @@
   .tv-select { flex: 1 1 100%; }
   .tv-advsearch-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Paginador ──────────────────────────────────────────────────────────── */
+.tv-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.tv-pagination__info {
+  font-size: .875rem;
+  color: var(--tv-muted);
+  letter-spacing: .01em;
+}
+.tv-pagination__info strong { color: var(--tv-text); }
+.tv-pagination__total { opacity: .75; }
+
+.tv-pagination__list {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tv-pagination__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 .75rem;
+  border-radius: 50px;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--tv-text);
+  background: #fff;
+  border: 2px solid var(--tv-border);
+  cursor: pointer;
+  transition: all .2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.tv-pagination__btn:hover {
+  border-color: var(--tv-primary);
+  color: var(--tv-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26,115,232,.2);
+}
+
+/* Página activa */
+.tv-pagination__btn--active {
+  background: linear-gradient(135deg, var(--tv-primary) 0%, #4f9cf9 100%);
+  border-color: transparent;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(26,115,232,.45);
+  transform: scale(1.1);
+  pointer-events: none;
+}
+.tv-pagination__btn--active:hover {
+  transform: scale(1.1);
+}
+
+/* Botones Anterior / Siguiente */
+.tv-pagination__btn--nav {
+  border-radius: 50px;
+  padding: 0 1.1rem;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.tv-pagination__btn--nav:hover {
+  background: var(--tv-primary);
+  border-color: var(--tv-primary);
+  color: #fff;
+}
+
+/* Deshabilitados */
+.tv-pagination__item.is-disabled .tv-pagination__btn {
+  opacity: .4;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Elipsis */
+.tv-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2.4rem;
+  color: var(--tv-muted);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+@media (max-width: 480px) {
+  .tv-pagination__btn--nav { font-size: .75rem; padding: 0 .7rem; }
+  .tv-pagination__info { text-align: center; }
+  .tv-pagination__total { display: none; }
+}

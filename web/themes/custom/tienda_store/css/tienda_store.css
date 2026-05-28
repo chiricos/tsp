@@ -219,6 +219,8 @@
   justify-content: center;
   width: 42px;
   height: 42px;
+  background: var(--bs-primary, #0d6efd);
+  color: #fff;
   border-radius: 50%;
   background: var(--bs-primary);
   color: #fff;

@@ -16,19 +16,29 @@ class CatalogController extends ControllerBase {
   public function catalog(Request $request): array {
     $keyword     = trim((string) $request->query->get('keyword', ''));
     $category_id = (int) $request->query->get('category', 0);
+    $per_page    = 12;
+    $page        = max(1, (int) $request->query->get('page', 1));
 
-    $products_data = $this->queryProducts($keyword, $category_id);
-    $categories    = $this->loadCategories();
+    $all_products = $this->queryProducts($keyword, $category_id);
+    $total        = count($all_products);
+    $total_pages  = max(1, (int) ceil($total / $per_page));
+    $page         = min($page, $total_pages);
+    $products_data = array_slice($all_products, ($page - 1) * $per_page, $per_page);
+    $categories   = $this->loadCategories();
 
     return [
-      '#theme'      => 'tienda_catalog',
-      '#products'   => $products_data,
-      '#keyword'    => $keyword,
-      '#category_id'=> $category_id,
-      '#categories' => $categories,
-      '#total'      => count($products_data),
-      '#attached'   => ['library' => ['tienda_virtual/tienda_virtual']],
-      '#cache'      => ['max-age' => 0],
+      '#theme'       => 'tienda_catalog',
+      '#products'    => $products_data,
+      '#keyword'     => $keyword,
+      '#category_id' => $category_id,
+      '#categories'  => $categories,
+      '#total'       => $total,
+      '#page'        => $page,
+      '#total_pages' => $total_pages,
+      '#per_page'    => $per_page,
+      '#page_range'  => $this->buildPageRange($page, $total_pages),
+      '#attached'    => ['library' => ['tienda_virtual/tienda_virtual']],
+      '#cache'       => ['max-age' => 0],
     ];
   }
 
@@ -194,6 +204,31 @@ class CatalogController extends ControllerBase {
     }
 
     return $data;
+  }
+
+  /**
+   * Build a compact page range with ellipsis markers (0 = ellipsis).
+   *
+   * @return int[]
+   */
+  private function buildPageRange(int $current, int $total): array {
+    if ($total <= 7) {
+      return range(1, $total);
+    }
+    $pages = [1];
+    $start = max(2, $current - 2);
+    $end   = min($total - 1, $current + 2);
+    if ($start > 2) {
+      $pages[] = 0; // ellipsis
+    }
+    for ($i = $start; $i <= $end; $i++) {
+      $pages[] = $i;
+    }
+    if ($end < $total - 1) {
+      $pages[] = 0; // ellipsis
+    }
+    $pages[] = $total;
+    return $pages;
   }
 
   /**

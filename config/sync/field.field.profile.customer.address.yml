@@ -25,6 +25,10 @@ settings:
   field_overrides:
     addressLine3:
       override: hidden
+    postalCode:
+      override: hidden
+    organization:
+      override: hidden
   fields:
     administrativeArea: administrativeArea
     locality: locality

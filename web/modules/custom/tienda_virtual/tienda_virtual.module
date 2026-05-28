@@ -16,6 +16,10 @@ function tienda_virtual_theme($existing, $type, $theme, $path): array {
         'category_id' => '',
         'categories'  => [],
         'total'       => 0,
+        'page'        => 1,
+        'total_pages' => 1,
+        'per_page'    => 12,
+        'page_range'  => [],
       ],
     ],
     'tienda_search_advanced' => [

@@ -1,0 +1,104 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    tsp-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^tsp\.ddev\.site$`)
+      
+      service: "tsp-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "tsp-redirectHttps"
+    tsp-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^tsp\.ddev\.site$`)
+      
+      service: "tsp-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "tsp-redirectHttps"
+    tsp-xhgui-80-http:
+      entrypoints:
+        - http-8143
+      rule: HostRegexp(`^tsp\.ddev\.site$`)
+      
+      service: "tsp-xhgui-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "tsp-redirectHttps"
+    
+    
+    
+    tsp-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^tsp\.ddev\.site$`)
+      
+      service: "tsp-web-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    tsp-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^tsp\.ddev\.site$`)
+      
+      service: "tsp-web-8025"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+    tsp-xhgui-80-https:
+      entrypoints:
+        - http-8142
+      rule: HostRegexp(`^tsp\.ddev\.site$`)
+      
+      service: "tsp-xhgui-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+
+  middlewares:
+    tsp-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    tsp-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-tsp-web:80
+        
+    tsp-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-tsp-web:8025
+        
+    
+    
+    tsp-xhgui-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-tsp-xhgui:80
+        
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/tsp.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/tsp.key

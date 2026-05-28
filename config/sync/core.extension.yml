@@ -58,6 +58,7 @@ module:
   path: 0
   path_alias: 0
   profile: 0
+  redirect: 0
   search: 0
   search_api: 0
   search_api_db: 0
@@ -72,6 +73,7 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  pathauto: 1
   views: 10
   standard: 1000
 theme:
