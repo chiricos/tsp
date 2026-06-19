@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^2.0",
+        "drupal/admin_toolbar": "^3.6",
         "drupal/belgrade": "^3",
         "drupal/bootstrap_layout_builder": "^2.2",
         "drupal/bootstrap_styles": "^1.2",

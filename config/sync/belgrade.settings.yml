@@ -1,5 +1,6 @@
 _core:
   default_config_hash: On3VUMxqfCwnZ8FoHX4NdfTr7PUxtddJ6oUvpuckuLY
+langcode: es
 belgrade_enable_color: 1
 base_primary_color: '#41449f'
 base_light_color: '#F0F1F5'
@@ -97,7 +98,7 @@ focused_page_header_container: container-lg
 focused_page_container: container-lg
 focused_checkout_main_column: col-xl-6
 main_container: container-xl
-navigation_toggle_text: Menu
+navigation_toggle_text: Menú
 navigation_position: start
 navigation_logo: 1
 region_bg_navigation: primary

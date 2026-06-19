@@ -24,6 +24,17 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_product_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -3
+    region: content
   title:
     type: string
     label: hidden
@@ -41,17 +52,6 @@ content:
       combine: true
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_product_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: large
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: -3
     region: content
 hidden:
   created: true
