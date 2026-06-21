@@ -149,7 +149,8 @@ class CatalogController extends ControllerBase {
         $price = $variation->getPrice();
         if ($price) {
           $price_number  = (float) $price->getNumber();
-          $price_display = '$' . number_format($price_number, 2) . ' ' . $price->getCurrencyCode();
+          $formatter = \Drupal::service('commerce_price.currency_formatter');
+          $price_display = $formatter->format($price->getNumber(), $price->getCurrencyCode());
         }
         if ($variation->hasField('field_stock')) {
           $stock = (int) $variation->get('field_stock')->value;

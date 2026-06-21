@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.storage.commerce_product.field_product_image
-    - image.style.large
+    - image.style.book_cover
+    - taxonomy.vocabulary.product_category
   module:
     - commerce_product
     - image
+    - taxonomy
 id: product_catalog
 label: 'Product catalog'
 module: views
@@ -77,7 +79,7 @@ display:
           type: image
           settings:
             image_link: content
-            image_style: large
+            image_style: book_cover
             image_loading:
               attribute: lazy
           group_column: ''
@@ -245,8 +247,8 @@ display:
         type: basic
         options:
           submit_button: Buscar
-          reset_button: false
-          reset_button_label: Reset
+          reset_button: true
+          reset_button_label: Limpiar
           exposed_sorts_label: 'Organizar por '
           expose_sort_order: true
           sort_asc_label: 'A → Z / Más reciente'
@@ -332,23 +334,163 @@ display:
           group_type: group
           admin_label: Keyword
           plugin_id: string
-          operator: CONTAINS
+          operator: contains
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: title_op
-            label: 'Keyword search'
+            operator_id: ''
+            label: 'Buscar por nombre'
             description: ''
             use_operator: false
             operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: keyword_search
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+            placeholder: 'Nombre del producto…'
           is_grouped: false
+        field_category_target_id:
+          id: field_category_target_id
+          table: commerce_product__field_category
+          field: field_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: Categoría
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: Categoría
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: category
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          vid: product_category
+          type: select
+          hierarchy: false
+          error_message: true
+        price_min:
+          id: price_min
+          table: commerce_product_variation_field_data
+          field: price__number
+          relationship: variation
+          group_type: group
+          admin_label: 'Precio mínimo'
+          plugin_id: numeric
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Precio mínimo (COP)'
+            description: ''
+            use_operator: false
+            operator: price_min_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: price_min
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        price_max:
+          id: price_max
+          table: commerce_product_variation_field_data
+          field: price__number
+          relationship: variation
+          group_type: group
+          admin_label: 'Precio máximo'
+          plugin_id: numeric
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Precio máximo (COP)'
+            description: ''
+            use_operator: false
+            operator: price_max_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: price_max
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: default
         options:
@@ -371,7 +513,17 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        variation:
+          id: variation
+          table: commerce_product_field_data
+          field: reverse__commerce_product_variation__product_id
+          relationship: none
+          group_type: group
+          admin_label: 'Variación del producto'
+          plugin_id: standard
+          required: false
+          label: Variación
       css_class: ''
       use_ajax: true
       use_more: false
