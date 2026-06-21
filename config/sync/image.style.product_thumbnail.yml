@@ -1,0 +1,15 @@
+uuid: 14404c91-1b91-409c-b690-1b3840ce539d
+langcode: es
+status: true
+dependencies: {  }
+name: product_thumbnail
+label: 'Product Thumbnail (400x400)'
+effects:
+  77228337-5220-409b-a595-aea206c20ba3:
+    uuid: 77228337-5220-409b-a595-aea206c20ba3
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 480
+      height: 480
+      anchor: center-center

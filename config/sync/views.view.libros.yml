@@ -1,28 +1,28 @@
-uuid: debbb090-c550-480c-871f-23bd9abca8ed
+uuid: db838033-b10d-4e85-9b5d-05af5ed1a874
 langcode: es
 status: true
 dependencies:
   config:
+    - field.storage.commerce_product.field_category
     - field.storage.commerce_product.field_product_image
-    - image.style.large
   module:
     - commerce_product
     - image
-id: product_catalog
-label: 'Product catalog'
+id: libros
+label: Libros
 module: views
-description: 'Catálogo de productos con filtros'
-tag: commerce
+description: ''
+tag: ''
 base_table: commerce_product_field_data
 base_field: product_id
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: Products
+      title: Libros
       fields:
         field_product_image:
           id: field_product_image
@@ -66,8 +66,8 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: div
-          element_wrapper_class: 'col-lg-12 views-row'
+          element_wrapper_type: ''
+          element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
@@ -76,8 +76,8 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: content
-            image_style: large
+            image_link: ''
+            image_style: ''
             image_loading:
               attribute: lazy
           group_column: ''
@@ -97,7 +97,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: commerce_product
+          entity_type: null
           entity_field: title
           plugin_id: field
           label: ''
@@ -133,7 +133,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -143,8 +143,7 @@ display:
           hide_alter_empty: true
           click_sort_column: value
           type: string
-          settings:
-            link_to_entity: false
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -220,37 +219,98 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_category:
+          id: field_category
+          table: commerce_product__field_category
+          field: field_category
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: mini
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 12
+          items_per_page: 9
           total_pages: null
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
+            next: ››
+            previous: ‹‹
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 'Elementos por página'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Todo -'
             offset: false
-            offset_label: Offset
+            offset_label: Desplazamiento
       exposed_form:
         type: basic
         options:
-          submit_button: Buscar
+          submit_button: Aplicar
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Organizar por '
+          reset_button_label: Restablecer
+          exposed_sorts_label: 'Ordenar por'
           expose_sort_order: true
-          sort_asc_label: 'A → Z / Más reciente'
-          sort_desc_label: 'Z → A / Más antiguo'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       access:
         type: none
         options: {  }
@@ -258,111 +318,24 @@ display:
         type: tag
         options: {  }
       empty: {  }
-      sorts:
-        created:
-          id: created
-          table: commerce_product_field_data
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: date
-          order: DESC
-          expose:
-            label: ''
-          exposed: false
-          operator: DESC
-        title:
-          id: title
-          table: commerce_product_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: ASC
-          expose:
-            label: 'Sort by'
-            field_identifier: title
-          exposed: true
-          operator: ASC
+      sorts: {  }
       arguments: {  }
       filters:
         status:
           id: status
           table: commerce_product_field_data
           field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
+          entity_type: commerce_product
+          entity_field: status
           plugin_id: boolean
-          operator: '='
           value: '1'
           group: 1
-          exposed: false
           expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
             operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        title:
-          id: title
-          table: commerce_product_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: Keyword
-          plugin_id: string
-          operator: CONTAINS
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_op
-            label: 'Keyword search'
-            description: ''
-            use_operator: false
-            operator: title_op
-            identifier: keyword_search
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
       style:
         type: default
-        options:
-          grouping: {  }
-          row_class: 'col-lg-4 col-md-6'
-          default_row_class: true
       row:
         type: fields
-        options:
-          default_field_elements: true
-          inline:
-            field_product_image: field_product_image
-          separator: ''
-          hide_empty: false
       query:
         type: views_query
         options:
@@ -372,11 +345,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      css_class: ''
       use_ajax: true
-      use_more: false
-      use_more_always: true
-      use_more_text: more
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -385,28 +354,24 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
       tags:
+        - 'config:field.storage.commerce_product.field_category'
         - 'config:field.storage.commerce_product.field_product_image'
   page_1:
     id: page_1
-    display_title: Catálogo
+    display_title: Page
     display_plugin: page
     position: 1
     display_options:
       display_extenders: {  }
-      path: productos
+      path: libros
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
       tags:
+        - 'config:field.storage.commerce_product.field_category'
         - 'config:field.storage.commerce_product.field_product_image'
