@@ -219,7 +219,7 @@
   justify-content: center;
   width: 42px;
   height: 42px;
-  background: var(--bs-primary, #0d6efd);
+  background:#0d6efd !important;
   color: #fff;
   border-radius: 50%;
   background: var(--bs-primary);
@@ -230,13 +230,13 @@
 }
 
 .ts-pager__btn:hover {
-  background: var(--bs-dark, #1a1a2e);
+  background: var(--bs-dark, #1a1a2e) !important;
   color: #fff;
   transform: scale(1.08);
 }
 
 .ts-pager__btn--disabled {
-  background: #e0e0e0;
+  background: #e0e0e0 !important;
   color: #aaa;
   cursor: default;
   pointer-events: none;
