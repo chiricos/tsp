@@ -168,6 +168,15 @@
   margin-top: 0.2rem;
 }
 
+#edit-actions {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#edit-actions-next {
+  margin-bottom: 30px;
+}
+
 /* Hide add-to-cart form in teaser — show price only */
 .product .product-price .commerce-order-item-add-to-cart-form .form-actions,
 .product .product-price .form-actions,

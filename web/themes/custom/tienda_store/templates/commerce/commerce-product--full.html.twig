@@ -46,6 +46,21 @@
       {{- product.title -}}
       {{- product.brand -}}
       <div class="fs-4">{{- product.variation_price -}}</div>
+
+      {# ── Stock ────────────────────────────────────────────────────────── #}
+      {% set stock = product_entity.defaultVariation.field_stock.value %}
+      {% if stock is not null %}
+        <div class="tv-stock mb-2">
+          {% if stock > 10 %}
+            <span class="badge bg-success">✓ En stock ({{ stock }} disponibles)</span>
+          {% elseif stock > 0 %}
+            <span class="badge bg-warning text-dark">⚠ Pocas unidades ({{ stock }} disponibles)</span>
+          {% else %}
+            <span class="badge bg-danger">✗ Agotado</span>
+          {% endif %}
+        </div>
+      {% endif %}
+
       <hr/>
       {% if product.special_categories|render is not empty %}
         <div class="mb-3">
