@@ -437,3 +437,47 @@
   .tv-pagination__info { text-align: center; }
   .tv-pagination__total { display: none; }
 }
+
+/* ==========================================================================
+   FAQ – Preguntas Frecuentes
+   ========================================================================== */
+
+.tv-faq {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.tv-faq__section {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--tv-primary);
+  margin: 2rem 0 .75rem;
+  padding-bottom: .4rem;
+  border-bottom: 2px solid var(--tv-border);
+}
+
+.tv-faq .accordion-button {
+  font-weight: 600;
+  font-size: .975rem;
+}
+
+.tv-faq .accordion-button:not(.collapsed) {
+  color: var(--tv-primary);
+  background-color: #e8f0fe;
+  box-shadow: none;
+}
+
+.tv-faq .accordion-button::after {
+  flex-shrink: 0;
+}
+
+.tv-faq__contact {
+  background: var(--tv-bg);
+  border: 1px solid var(--tv-border);
+}
+
+.tv-faq__contact h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
