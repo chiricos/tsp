@@ -227,14 +227,12 @@ display:
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 12
+          items_per_page: 9
           total_pages: null
           id: 0
           tags:
             next: 'Next ›'
             previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -286,7 +284,7 @@ display:
           expose:
             label: 'Sort by'
             field_identifier: title
-          exposed: true
+          exposed: false
           operator: ASC
       arguments: {  }
       filters:
@@ -539,8 +537,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
       tags:
         - 'config:field.storage.commerce_product.field_product_image'
   page_1:
@@ -558,7 +554,5 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
       tags:
         - 'config:field.storage.commerce_product.field_product_image'
